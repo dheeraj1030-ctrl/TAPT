@@ -1,0 +1,201 @@
+/* ==========================================================================
+   TAPT Mobile Layout Stylesheet
+   OWNER: Mobile Frontend Developer (YOU)
+   PURPOSE: Responsive mobile-first adaptation, bottom navigation bar, touch targets.
+   APPLIES TO: Screens <= 768px
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+  /* Hide the fixed desktop sidebar */
+  .sidebar {
+    display: none !important;
+  }
+
+  /* Reset main content wrapper offset */
+  .main-wrapper {
+    margin-left: 0 !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Extra padding at bottom to avoid content being covered by bottom nav bar */
+    padding-bottom: calc(var(--mobile-nav-height, 60px) + env(safe-area-inset-bottom, 16px) + 20px);
+  }
+
+  /* Mobile Top Bar */
+  .top-bar {
+    height: var(--mobile-topbar-height, 56px);
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .top-bar-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .user-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Hide user name text on narrow screens to prevent header crowding */
+  .user-name {
+    display: none;
+  }
+
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--avatar-bg);
+    border: 1px solid var(--border-color);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .logout-btn {
+    font-size: 13px;
+    color: var(--accent-blue);
+    padding: 6px 10px;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Mobile Page Content Padding */
+  .page-content {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Content Header adjustments on mobile */
+  .content-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .content-title {
+    font-size: 18px;
+  }
+
+  .btn {
+    min-height: 44px; /* Apple/Android recommended minimum touch target */
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  /* ========================================================================
+     Mobile Bottom Navigation Bar
+     Native mobile app navigation pattern for thumb-friendly reachability
+     ======================================================================== */
+  .mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--mobile-nav-height, 60px);
+    background-color: var(--bg-card);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 1000;
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: 0 -4px 12px rgba(1, 4, 9, 0.4);
+  }
+
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 500;
+    flex: 1;
+    min-height: 48px; /* Touch target */
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .mobile-nav-item:hover,
+  .mobile-nav-item:active {
+    color: #ffffff;
+  }
+
+  .mobile-nav-item.active {
+    color: var(--accent-blue);
+    font-weight: 600;
+  }
+
+  .mobile-nav-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  /* ========================================================================
+     Mobile Meeting Cards (Alternative to wide horizontal scrolling table)
+     ======================================================================== */
+  .meeting-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .meeting-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .meeting-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .meeting-card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+
+  .meeting-card-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .meeting-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 6px;
+    border-top: 1px solid var(--border-color);
+  }
+}
