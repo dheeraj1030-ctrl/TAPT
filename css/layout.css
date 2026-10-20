@@ -393,3 +393,104 @@ body {
   font-size: 15px;
 }
 
+
+/* ================================
+   LIGHT THEME
+   ================================ */
+
+:root[data-theme="light"] {
+  --bg-main: #f6f8fa;
+  --bg-card: #ffffff;
+  --bg-sidebar: #ffffff;
+  --border-color: #d0d7de;
+  --text-main: #1f2328;
+  --text-muted: #424a53;
+  --text-dim: #656d76;
+  --accent-blue: #0969da;
+  --accent-green: #1a7f37;
+  --sidebar-active: #eaeef2;
+  --avatar-bg: #eaeef2;
+}
+
+/* Text colors that were hard-coded for dark mode */
+:root[data-theme="light"] .sidebar-title,
+:root[data-theme="light"] .top-bar-title,
+:root[data-theme="light"] .empty-state-title {
+  color: #1f2328;
+}
+
+/* Avatar text */
+:root[data-theme="light"] .user-avatar {
+  color: #1f2328;
+}
+
+/* Sidebar link hover */
+:root[data-theme="light"] .nav-link:hover {
+  color: #1f2328;
+}
+
+/* Table hover */
+:root[data-theme="light"] .table tbody tr:hover {
+  background-color: #f3f4f6;
+}
+
+/* Empty-state shadow */
+:root[data-theme="light"] .empty-state-card {
+  box-shadow: 0 4px 16px rgba(31, 35, 40, 0.08);
+}
+
+/* ================================
+   THEME TOGGLE BUTTON
+   ================================ */
+
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background-color 0.15s ease,
+              color 0.15s ease,
+              border-color 0.15s ease;
+}
+
+.theme-icon {
+  display: block;
+}
+
+.theme-toggle:hover {
+  background-color: var(--sidebar-active);
+  color: var(--text-main);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+/* Keep the top navbar contents aligned */
+.user-area {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Small-screen adjustment */
+@media (max-width: 600px) {
+  .top-bar {
+    padding: 0 12px;
+  }
+
+  .user-area {
+    gap: 8px;
+  }
+}
