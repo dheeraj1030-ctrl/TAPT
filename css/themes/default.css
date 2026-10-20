@@ -1,0 +1,45 @@
+/* ==========================================================================
+   TAPT Theming System: Default Dark Theme (Base)
+   OWNER: Theming Team
+   PURPOSE: Defines CSS custom properties (design tokens) used by all layouts.
+   To create a new theme, duplicate this file and override the variables.
+   ========================================================================== */
+
+:root {
+  /* Surface & Background Colors */
+  --bg-main: #0d1117;           /* Deep dark background */
+  --bg-card: #161b22;           /* Dark elevated surface (cards, sidebar, topbar) */
+  --bg-sidebar: #161b22;        /* Sidebar background */
+  --sidebar-active: #21262d;    /* Active menu item / hover background */
+  --border-color: #30363d;      /* Subtle border & divider line */
+
+  /* Typography Colors */
+  --text-main: #e6edf3;         /* Primary bright text */
+  --text-muted: #c9d1d9;        /* Secondary lighter grey text */
+  --text-dim: #8b949e;          /* Tertiary dim grey text / placeholders */
+
+  /* Brand Accents & Interactive */
+  --accent-blue: #58a6ff;       /* Active link, badges, link highlight */
+  --accent-green: #238636;      /* Primary button & brand accent */
+  --accent-green-hover: #2ea043;/* Button hover state */
+
+  /* Status Colors */
+  --status-completed-bg: rgba(35, 134, 54, 0.2);
+  --status-completed-text: #3fb950;
+  --status-completed-border: rgba(63, 185, 80, 0.3);
+
+  --status-upcoming-bg: rgba(56, 139, 253, 0.15);
+  --status-upcoming-text: var(--accent-blue);
+  --status-upcoming-border: rgba(88, 166, 255, 0.3);
+
+  --status-error-bg: rgba(248, 81, 73, 0.15);
+  --status-error-text: #ff7b72;
+  --status-error-border: rgba(248, 81, 73, 0.4);
+
+  /* Component Dimensions */
+  --avatar-bg: #30363d;         /* User initials circle background */
+  --sidebar-width: 240px;       /* Fixed width of the desktop left sidebar */
+  --topbar-height: 64px;        /* Height of top navigation bar on desktop */
+  --mobile-topbar-height: 56px; /* Height of top navigation bar on mobile */
+  --mobile-nav-height: 60px;    /* Height of bottom navigation bar on mobile */
+}
