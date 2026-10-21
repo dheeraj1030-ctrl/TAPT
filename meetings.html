@@ -15,18 +15,16 @@
       }
     })();
   </script>
-  <!-- Link shared layout stylesheet -->
+  <!-- Link shared modular master stylesheet -->
   <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
 
   <!-- ========================================================================
-       SHARED COMPONENT BLOCK
-       This block is repeated on every page. Later we will replace it with one shared JavaScript component.
+       DESKTOP NAVIGATION (Fixed Left Sidebar)
+       Visible on screens > 768px via desktop layout styles
        ======================================================================== -->
-
-  <!-- Fixed Left Sidebar -->
-  <nav class="sidebar" aria-label="Main Navigation">
+  <nav class="sidebar desktop-only" aria-label="Main Navigation">
 
     <!-- App Name Header -->
     <div class="sidebar-header">
@@ -87,10 +85,10 @@
     </div>
   </nav>
 
-  <!-- Main Content Wrapper (offset to the right of sidebar) -->
+  <!-- Main Content Wrapper (offset on desktop, full width on mobile) -->
   <div class="main-wrapper">
 
-    <!-- Top Bar -->
+    <!-- Top Bar (Adaptive for Desktop and Mobile) -->
     <header class="top-bar">
       <!-- Page Title -->
       <h1 class="top-bar-title">Meetings</h1>
@@ -130,10 +128,10 @@
         </button>
         <!-- User avatar with initials -->
         <div class="user-avatar" title="User Avatar">UN</div>
-        <!-- User display name -->
+        <!-- User display name (hidden on small mobile screens via mobile.css) -->
         <span id="user-name" class="user-name">User Name</span>
-        <!-- Logout link pointing to login.html -->
-        <a href="login.html" id="logout-btn" class="logout-btn">Logout</a>
+        <!-- Logout link pointing to index.html -->
+        <a href="index.html" id="logout-btn" class="logout-btn">Logout</a>
       </div>
     </header>
 
@@ -146,9 +144,8 @@
         <button type="button" id="new-meeting-btn" class="btn btn-primary" data-role="admin">New meeting</button>
       </div>
 
-      <!-- Table container: Scrolls horizontally on small screens to prevent page overflow -->
-      <div class="table-responsive">
-        <!-- Meetings Table -->
+      <!-- DESKTOP: Data Table (visible on screens > 768px) -->
+      <div class="table-responsive desktop-only">
         <table id="meetings-table" class="table">
           <thead>
             <tr>
@@ -159,9 +156,7 @@
               <th>Actions</th>
             </tr>
           </thead>
-          <!-- These 3 rows are hard-coded. In the next step JavaScript will create them from data. -->
           <tbody id="meetings-body">
-            <!-- Row 1: Completed meeting -->
             <tr>
               <td>Sprint planning</td>
               <td>20 Oct 2026</td>
@@ -169,7 +164,6 @@
               <td><span class="badge badge-completed">Completed</span></td>
               <td><a href="tasks.html" class="action-link">View tasks</a></td>
             </tr>
-            <!-- Row 2: Upcoming meeting -->
             <tr>
               <td>Design review</td>
               <td>22 Oct 2026</td>
@@ -177,7 +171,6 @@
               <td><span class="badge badge-upcoming">Upcoming</span></td>
               <td><a href="tasks.html" class="action-link">View tasks</a></td>
             </tr>
-            <!-- Row 3: Upcoming meeting with zero tasks -->
             <tr>
               <td>Weekly sync</td>
               <td>25 Oct 2026</td>
@@ -187,6 +180,54 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- MOBILE: Meeting Cards (visible on screens <= 768px) -->
+      <div class="meeting-cards mobile-only" id="mobile-meetings-list">
+        <!-- Meeting Card 1 -->
+        <div class="meeting-card">
+          <div class="meeting-card-header">
+            <h3 class="meeting-card-title">Sprint planning</h3>
+            <span class="badge badge-completed">Completed</span>
+          </div>
+          <div class="meeting-card-details">
+            <span>📅 20 Oct 2026</span>
+            <span>📝 5 tasks</span>
+          </div>
+          <div class="meeting-card-actions">
+            <a href="tasks.html" class="action-link">View tasks &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Meeting Card 2 -->
+        <div class="meeting-card">
+          <div class="meeting-card-header">
+            <h3 class="meeting-card-title">Design review</h3>
+            <span class="badge badge-upcoming">Upcoming</span>
+          </div>
+          <div class="meeting-card-details">
+            <span>📅 22 Oct 2026</span>
+            <span>📝 3 tasks</span>
+          </div>
+          <div class="meeting-card-actions">
+            <a href="tasks.html" class="action-link">View tasks &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Meeting Card 3 -->
+        <div class="meeting-card">
+          <div class="meeting-card-header">
+            <h3 class="meeting-card-title">Weekly sync</h3>
+            <span class="badge badge-upcoming">Upcoming</span>
+          </div>
+          <div class="meeting-card-details">
+            <span>📅 25 Oct 2026</span>
+            <span>📝 0 tasks</span>
+          </div>
+          <div class="meeting-card-actions">
+            <a href="tasks.html" class="action-link">View tasks &rarr;</a>
+          </div>
+        </div>
       </div>
 
       <!-- Empty state: Hidden for now, shown later when no meetings are found -->
@@ -199,5 +240,44 @@
   </div>
 
   <script src="js/theme.js"></script>
+  <!-- ========================================================================
+       MOBILE BOTTOM NAVIGATION (Visible on screens <= 768px)
+       Thumb-friendly navigation bar owned by Mobile Developer
+       ======================================================================== -->
+  <nav class="mobile-bottom-nav mobile-only" aria-label="Mobile Navigation">
+    <!-- Meetings (Active) -->
+    <a href="meetings.html" class="mobile-nav-item active">
+      <svg class="mobile-nav-icon" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+      </svg>
+      <span>Meetings</span>
+    </a>
+
+    <!-- Tasks -->
+    <a href="tasks.html" class="mobile-nav-item">
+      <svg class="mobile-nav-icon" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+        <path d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z"/>
+      </svg>
+      <span>Tasks</span>
+    </a>
+
+    <!-- Scores -->
+    <a href="scores.html" class="mobile-nav-item">
+      <svg class="mobile-nav-icon" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.774-3.333 3.03V13h2.5a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1H7v-2.044c-1.455-.256-2.543-1.165-3.333-3.03a3 3 0 1 1-1.133-5.89A33.437 33.437 0 0 1 2.5.5zm.999 2.024A1.996 1.996 0 0 0 3 4c0 .884.57 1.636 1.37 1.91a8.037 8.037 0 0 1-.87-3.386zm9.002 0c-.068 1.18-.363 2.34-.87 3.386.8-.274 1.37-1.026 1.37-1.91 0-.64-.302-1.21-.77-1.574A1.996 1.996 0 0 0 12.5 2.524zM8 10c1.8 0 3-1.5 3-4V1H5v5c0 2.5 1.2 4 3 4z"/>
+      </svg>
+      <span>Scores</span>
+    </a>
+
+    <!-- Admin -->
+    <a href="#" class="mobile-nav-item" data-role="admin">
+      <svg class="mobile-nav-icon" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/>
+      </svg>
+      <span>Admin</span>
+    </a>
+  </nav>
+
 </body>
 </html>

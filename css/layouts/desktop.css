@@ -1,0 +1,158 @@
+/* ==========================================================================
+   TAPT Desktop Layout Stylesheet
+   OWNER: Desktop Teammate
+   PURPOSE: Desktop shell layout (fixed sidebar, sticky topbar, wide content padding).
+   APPLIES TO: Screens > 768px
+   ========================================================================== */
+
+@media (min-width: 769px) {
+
+  /* Fixed left sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    z-index: 100;
+  }
+
+  /* App name header at the top of the sidebar */
+  .sidebar-header {
+    padding: 0 20px 20px 20px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 16px;
+  }
+
+  .sidebar-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Navigation link list inside sidebar */
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 12px;
+  }
+
+  /* Individual navigation link */
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .nav-link:hover {
+    background-color: var(--sidebar-active);
+    color: #ffffff;
+  }
+
+  .nav-link.active {
+    background-color: var(--sidebar-active);
+    color: var(--accent-blue);
+    font-weight: 600;
+  }
+
+  .nav-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .nav-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 12px 0;
+  }
+
+  /* Main layout wrapper offset to make room for fixed sidebar */
+  .main-wrapper {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Desktop Top Bar */
+  .top-bar {
+    height: var(--topbar-height);
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .top-bar-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .user-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--avatar-bg);
+    border: 1px solid var(--border-color);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .user-name {
+    font-size: 14px;
+    color: var(--text-main);
+    font-weight: 500;
+  }
+
+  .logout-btn {
+    font-size: 13px;
+    color: var(--accent-blue);
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: background-color 0.15s ease;
+  }
+
+  .logout-btn:hover {
+    background-color: var(--sidebar-active);
+    text-decoration: underline;
+  }
+
+  .page-content {
+    flex: 1;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+  }
+}
